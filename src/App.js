@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
+import Hud from "./Hud";
 import './App.css';
 import colorTransformation from "./colorTransformation.js";
 import convertMatrix from "./compute.js";
@@ -14,7 +15,7 @@ function App() {
   const width = window.innerWidth, height = window.innerHeight;
   const [center, setCenter] = useState({ x: -0.5, y: 0 });
   const [zoom, setZoom] = useState(1.5)
-  const resolution = 100;
+  const [resolution, setResolution] = useState(100);
   const mandelbrot = useRef(null);
 
   useEffect(() => {
@@ -28,7 +29,7 @@ function App() {
     }
     const {x, y} = mandelbrot.current.getBoundingClientRect();
     setOffset({x, y});
-  }, [center, zoom]);
+  }, [center, zoom, resolution]);
 
   const createMatrix = (c, zoom, w, h) => {
     const delta = (2*zoom)/h;
@@ -52,13 +53,18 @@ function App() {
     <div>
       <div
         className="App"
-        style={{ position: "relative", display: "flex", justifyContent: "center" }}
+        style={{
+          position: "relative",
+          display: "flex",
+          justifyContent: "center",
+          height: "100vh"
+        }}
       >
         <canvas
           ref={mandelbrot}
           width={width}
           height={height}
-          style={{ border: "1px solid black", position: "absolute" }}
+          style={{ position: "absolute" }}
         ></canvas>
         <svg
           width={width}
@@ -110,6 +116,14 @@ function App() {
             fill="transparent"
           />}
         </svg>
+        <Hud
+          resolution={resolution}
+          setResolution={setResolution}
+          center={center}
+          setCenter={setCenter}
+          zoom={zoom}
+          setZoom={setZoom}
+        />
       </div>
     </div>
   );
