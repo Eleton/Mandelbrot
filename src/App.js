@@ -12,13 +12,13 @@ function App() {
   const [zoomerHeight, setZoomerHeight] = useState(0)
 
   const width = window.innerWidth, height = window.innerHeight;
-  const [center, setCenter] = useState({ x: 0, y: 0 });
-  const [zoom, setZoom] = useState(2)
+  const [center, setCenter] = useState({ x: -0.5, y: 0 });
+  const [zoom, setZoom] = useState(1.5)
   const resolution = 100;
   const mandelbrot = useRef(null);
 
-  const drawMatrix = (c, z) => {
-    const mat = convertMatrix(createMatrix(c, z, width, height), resolution);
+  useEffect(() => {
+    const mat = convertMatrix(createMatrix(center, zoom, width, height), resolution);
     const ctx = mandelbrot.current.getContext("2d");
     for (let y = 0; y < height; y++) {
       for (let x = 0; x < width; x++) {
@@ -28,11 +28,7 @@ function App() {
     }
     const {x, y} = mandelbrot.current.getBoundingClientRect();
     setOffset({x, y});
-  }
-
-  useEffect(() => {
-    drawMatrix(center, zoom);
-  }, []);
+  }, [center, zoom]);
 
   const createMatrix = (c, zoom, w, h) => {
     const delta = (2*zoom)/h;
@@ -93,7 +89,6 @@ function App() {
             setZoomerHeight(0)
             setZoomerWidth(0)
 
-            drawMatrix({x: realX, y: realY}, newZoom);
           }}
           onMouseMove={e => {
             if (pressed) {
