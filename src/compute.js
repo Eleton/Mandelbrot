@@ -9,7 +9,7 @@ const multiply = (z1, z2) => {
 const compute = (c, z, n, limit) => {
   if (n === limit) {
     return 0;
-  } else if (Math.abs(z.r) >= 2 || Math.abs(z.i) >= 2) {
+  } else if (Math.abs(z.r) >= 10 || Math.abs(z.i) >= 10) {
     return n;
   } else {
     return compute(c, add(multiply(z, z), c), n+1, limit);
@@ -17,7 +17,6 @@ const compute = (c, z, n, limit) => {
 }
 
 const convertMatrix = (matrix, resolution) => {
-  console.log(resolution)
   return matrix.map(row => {
     return row.map(c => {
       return compute(c, {r: 0, i: 0}, 0, resolution);

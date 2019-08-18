@@ -7,21 +7,18 @@ function App() {
   const [pressed, setPressed] = useState(false);
   const [offset, setOffset] = useState({ x: 0, y: 0 });
   const [coord, setCoord] = useState({ x: 0, y: 0 });
-  const [coord2, setCoord2] = useState({ x: 0, y: 0 });
-  const [heightDavid, setHeight] = useState(0)
-  const [widthDavid, setWidth] = useState(0)
-  const width = window.innerHeight, height = window.innerHeight;
-  const [edges, setEdges] = useState({
-    top: 2,
-    right: 2,
-    bottom: -2,
-    left: -2
-  });
+
+  const [zoomerWidth, setZoomerWidth] = useState(0)
+  const [zoomerHeight, setZoomerHeight] = useState(0)
+
+  const width = window.innerWidth, height = window.innerHeight;
+  const [center, setCenter] = useState({ x: 0, y: 0 });
+  const [zoom, setZoom] = useState(2)
   const resolution = 100;
   const mandelbrot = useRef(null);
 
-  useEffect(() => {
-    const mat = convertMatrix(createMatrix(edges, width, height), resolution);
+  const drawMatrix = (c, z) => {
+    const mat = convertMatrix(createMatrix(c, z, width, height), resolution);
     const ctx = mandelbrot.current.getContext("2d");
     for (let y = 0; y < height; y++) {
       for (let x = 0; x < width; x++) {
@@ -29,28 +26,32 @@ function App() {
         ctx.fillRect(x, y, 1, 1);
       }
     }
-    console.log(mandelbrot.current.getBoundingClientRect());
     const {x, y} = mandelbrot.current.getBoundingClientRect();
     setOffset({x, y});
+  }
+
+  useEffect(() => {
+    drawMatrix(center, zoom);
   }, []);
 
+  const createMatrix = (c, zoom, w, h) => {
+    const delta = (2*zoom)/h;
+    const leftBound = c.x - (w/2)*delta;
+    const topBound = c.y - zoom;
 
-  const createMatrix = ({top, right, bottom, left}, w, h) => {
-    const deltaX = (right - left)/w;
-    const deltaY = (bottom - top)/h;
     const matrix = [];
     for (let y = 0; y < h; y++) {
       const row = [];
       for (let x = 0; x < w; x++) {
-        const xVal = left + x*deltaX;
-        const yVal = top + y*deltaY;
+        const xVal = leftBound + x*delta;
+        const yVal = topBound + y*delta;
         row.push({r: xVal, i: yVal});
       }
       matrix.push(row);
     }
     return matrix;
   }
-
+  
   return (
     <div>
       <div
@@ -73,30 +74,44 @@ function App() {
             setCoord({ x: e.pageX - x, y: e.pageY - y})
           }}
           onMouseUp={() => {
+            const delta = (2*zoom)/height;
+            const leftBound = center.x - (width/2)*delta;
+
+            const dimensionalX = coord.x + zoomerWidth/2;
+            const dimensionalY = coord.y + zoomerHeight/2;
+            const realX = leftBound + delta*dimensionalX;
+            const realY = center.y - zoom + delta*dimensionalY;
+
+            setCenter({x: realX, y: realY});
+
+            const newZoom = Math.abs(delta*zoomerHeight/2);
+
+            setZoom(newZoom);
+
             setPressed(false);
             setCoord({ x: 0, y: 0 });
-            setCoord2({ x: 0, y: 0 });
-            setHeight(0)
-            setWidth(0)
-            setEdges()
-            
+            setZoomerHeight(0)
+            setZoomerWidth(0)
+
+            drawMatrix({x: realX, y: realY}, newZoom);
           }}
           onMouseMove={e => {
             if (pressed) {
               const newWidth = e.pageX - offset.x - coord.x;
               const newHeight = e.pageY - offset.y - coord.y;
-              setHeight(newHeight < 0 ? 0 : newHeight)
-              setWidth(newWidth < 0 ? 0 : newWidth)
+              setZoomerWidth(newWidth < 0 ? 0 : newWidth)
+              setZoomerHeight(newHeight < 0 ? 0 : newHeight)
             }
           }}
         >
           {pressed && <rect
             x={coord.x}
+            width={zoomerWidth}
             y={coord.y}
-            width={widthDavid}
-            height={heightDavid}
-            stroke={pressed ? "black" : "transparent"}
-            strokeWidth="4px"
+            height={zoomerHeight}
+            stroke={pressed ? "white" : "transparent"}
+            strokeWidth="2px"
+            strokeDasharray="4"
             fill="transparent"
           />}
         </svg>

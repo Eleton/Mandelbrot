@@ -1,6 +1,7 @@
 const colorTransformation = (number, max) => {
-  const delta = 360/max;
-  return number === 0 ? "black" : `hsl(${number*delta}, 50%, 50%)`;
+  const deltaH = 360/max;
+  const deltaS = 100/max;
+  return number === 0 ? "black" : `hsl(${number*deltaH}, 100%, ${number*deltaS}%)`;
 }
 
 export default colorTransformation;
