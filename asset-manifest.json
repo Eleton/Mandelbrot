@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/mandelbrot/static/css/main.2d3c9e71.chunk.css",
-    "main.js": "/mandelbrot/static/js/main.f2f6eb06.chunk.js",
-    "main.js.map": "/mandelbrot/static/js/main.f2f6eb06.chunk.js.map",
-    "runtime~main.js": "/mandelbrot/static/js/runtime~main.f4240752.js",
-    "runtime~main.js.map": "/mandelbrot/static/js/runtime~main.f4240752.js.map",
-    "static/js/2.ac1d3316.chunk.js": "/mandelbrot/static/js/2.ac1d3316.chunk.js",
-    "static/js/2.ac1d3316.chunk.js.map": "/mandelbrot/static/js/2.ac1d3316.chunk.js.map",
-    "index.html": "/mandelbrot/index.html",
-    "precache-manifest.6a2f757f764f1b083c581907b8309d0b.js": "/mandelbrot/precache-manifest.6a2f757f764f1b083c581907b8309d0b.js",
-    "service-worker.js": "/mandelbrot/service-worker.js",
-    "static/css/main.2d3c9e71.chunk.css.map": "/mandelbrot/static/css/main.2d3c9e71.chunk.css.map"
+    "main.css": "/Mandelbrot/static/css/main.2d3c9e71.chunk.css",
+    "main.js": "/Mandelbrot/static/js/main.45d12cc5.chunk.js",
+    "main.js.map": "/Mandelbrot/static/js/main.45d12cc5.chunk.js.map",
+    "runtime~main.js": "/Mandelbrot/static/js/runtime~main.0a6abfa0.js",
+    "runtime~main.js.map": "/Mandelbrot/static/js/runtime~main.0a6abfa0.js.map",
+    "static/js/2.ac1d3316.chunk.js": "/Mandelbrot/static/js/2.ac1d3316.chunk.js",
+    "static/js/2.ac1d3316.chunk.js.map": "/Mandelbrot/static/js/2.ac1d3316.chunk.js.map",
+    "index.html": "/Mandelbrot/index.html",
+    "precache-manifest.030a09ed90d19eb8be87540731275e80.js": "/Mandelbrot/precache-manifest.030a09ed90d19eb8be87540731275e80.js",
+    "service-worker.js": "/Mandelbrot/service-worker.js",
+    "static/css/main.2d3c9e71.chunk.css.map": "/Mandelbrot/static/css/main.2d3c9e71.chunk.css.map"
   }
 }
