@@ -29,7 +29,7 @@ function App() {
     }
     const {x, y} = mandelbrot.current.getBoundingClientRect();
     setOffset({x, y});
-  }, [center, zoom, resolution]);
+  }, [center, zoom, resolution, width, height]);
 
   const createMatrix = (c, zoom, w, h) => {
     const delta = (2*zoom)/h;

@@ -14,7 +14,7 @@ const Hud = ({
     setTempX(center.x);
     setTempY(center.y);
     setTempZoom(zoom);
-  })
+  }, [center.x, center.y, zoom])
 
   const changeResolution = (e) => {
     setTempResolution(parseInt(e.target.value));
