@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "mandelbrot.aiman.space/static/css/main.2d3c9e71.chunk.css",
-    "main.js": "mandelbrot.aiman.space/static/js/main.cdf56ee6.chunk.js",
-    "main.js.map": "mandelbrot.aiman.space/static/js/main.cdf56ee6.chunk.js.map",
+    "main.js": "mandelbrot.aiman.space/static/js/main.7b0a2462.chunk.js",
+    "main.js.map": "mandelbrot.aiman.space/static/js/main.7b0a2462.chunk.js.map",
     "runtime~main.js": "mandelbrot.aiman.space/static/js/runtime~main.61161afb.js",
     "runtime~main.js.map": "mandelbrot.aiman.space/static/js/runtime~main.61161afb.js.map",
     "static/js/2.ac1d3316.chunk.js": "mandelbrot.aiman.space/static/js/2.ac1d3316.chunk.js",
     "static/js/2.ac1d3316.chunk.js.map": "mandelbrot.aiman.space/static/js/2.ac1d3316.chunk.js.map",
     "index.html": "mandelbrot.aiman.space/index.html",
-    "precache-manifest.bd0896299847ee3d54bf2ad21b22cf29.js": "mandelbrot.aiman.space/precache-manifest.bd0896299847ee3d54bf2ad21b22cf29.js",
+    "precache-manifest.78a64e117aa9f31c7cad57de5a0f1900.js": "mandelbrot.aiman.space/precache-manifest.78a64e117aa9f31c7cad57de5a0f1900.js",
     "service-worker.js": "mandelbrot.aiman.space/service-worker.js",
     "static/css/main.2d3c9e71.chunk.css.map": "mandelbrot.aiman.space/static/css/main.2d3c9e71.chunk.css.map"
   }

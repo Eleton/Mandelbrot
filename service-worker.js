@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "mandelbrot.aiman.space/precache-manifest.bd0896299847ee3d54bf2ad21b22cf29.js"
+  "mandelbrot.aiman.space/precache-manifest.78a64e117aa9f31c7cad57de5a0f1900.js"
 );
 
 self.addEventListener('message', (event) => {
